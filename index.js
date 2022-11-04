@@ -1,17 +1,20 @@
 function fetchBooks() {
-  // To pass the tests, don't forget to return your fetch!
-  
-}
+fetch ("https://anapioficeandfire.com/api/books")
+.then((resp) => resp.json()) 
+.then((json) => renderBooks(books))
+}  
 
 function renderBooks(books) {
   const main = document.querySelector('main');
-  books.forEach(book => {
-    const h2 = document.createElement('h2');
-    h2.innerHTML = book.name;
-    main.appendChild(h2);
+    console.log(main)
+
+   books.forEach(book => {
+    const bookLi= document.createElement('li')
+    bookLi.textContent = book.name
+    main.append(bookLi);
   });
 }
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded',function() {
   fetchBooks();
 });
